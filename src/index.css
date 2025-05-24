@@ -12,6 +12,10 @@
     font-style: normal;
 }
 
+.bebas-cart {
+    font-family: "Bebas Neue", sans-serif;
+}
+
 .invitationFont {
     font-family: "Oleo Script", system-ui;
 }
@@ -489,4 +493,13 @@ textarea {
 .bg_primary_footer {
     background-color: white;
     border-color: rgba(128, 128, 128, 0.404);
+}
+
+.bg-image {
+    width: 390px;
+    background-color: red;
+    background-image: url(/public/image/cart.jpg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }

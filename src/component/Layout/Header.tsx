@@ -5,6 +5,7 @@ import { FaPeopleGroup } from "react-icons/fa6";
 import { IoNewspaperOutline } from "react-icons/io5";
 import { IoMdPhotos } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
+import { toast } from "react-toastify";
 const navigation = [
   { name: "Menu", href: "#", current: true },
   { name: "Team", href: "#", current: false },
@@ -12,15 +13,17 @@ const navigation = [
   { name: "Calendar", href: "#", current: false },
 ];
 
-export default function Header({setSideBar ,sideBar}) {
-
+export default function Header({ setSideBar, sideBar }) {
+  const isAuthenticate = localStorage.getItem("access_token")?.trim();
   return (
     <header className="bg-white shadow-md h-[50px]  ">
       <div className=" flex justify-between items-center px-5 h-full">
-        <div onClick={()=>setSideBar(!sideBar)} className="cursor-pointer">
-         {
-          sideBar ? <RxCross1 size={25} color="black"/>: <GiHamburgerMenu size={25} color="black"  />
-         }
+        <div onClick={() => setSideBar(!sideBar)} className="cursor-pointer">
+          {sideBar ? (
+            <RxCross1 size={25} color="black" />
+          ) : (
+            <GiHamburgerMenu size={25} color="black" />
+          )}
         </div>
 
         <div className="relative group inline-block">
@@ -44,10 +47,20 @@ export default function Header({setSideBar ,sideBar}) {
             >
               Login
             </a>
+
+            
+
+            {isAuthenticate && (
+              <a
+                className="block cursor-pointer px-4 py-2 text-black hover:bg-gray-700 hover:text-white"
+                href="/profile"
+              >
+                Profile
+              </a>
+            )}
           </div>
         </div>
       </div>
-
     </header>
   );
 }

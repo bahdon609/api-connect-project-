@@ -4,7 +4,6 @@ import ReactToPrint from "react-to-print";
 
 export default function StudentIdCard() {
   const [studentIdCard, setStudentIdCard] = useState([]);
-  console.log("idcartdata", studentIdCard);
   const [sessionYear, setSessionYear] = useState([]);
   const [sectionName, setSectionName] = useState([]);
 
@@ -15,6 +14,7 @@ export default function StudentIdCard() {
   });
 
   console.log(formData);
+ 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
     if (!token) {
@@ -24,7 +24,7 @@ export default function StudentIdCard() {
     const FetchedSessionData = async () => {
       try {
         const response = await axios.get(
-          "https://school.bdtravel.net/api/student-id-card",
+          "https://bdschool.my/api/student-id-card",
 
           {
             headers: {
@@ -34,10 +34,10 @@ export default function StudentIdCard() {
           }
         );
 
-        console.log("Working:", response);
+        // console.log("Working:", response);
         setSessionYear(response.data);
       } catch (err) {
-        console.error("Error:", err);
+        console.error("", );
       }
     };
 
@@ -58,7 +58,7 @@ export default function StudentIdCard() {
 
     try {
       const response = await axios.post(
-        "https://school.bdtravel.net/api/class-wise-section",
+        "https://bdschool.my/api/class-wise-section",
         { classname_id: formData.classname_id },
         {
           headers: {
@@ -85,7 +85,7 @@ export default function StudentIdCard() {
 
     try {
       const response = await axios.post(
-        "https://school.bdtravel.net/api/student-id-card-generate",
+        "https://bdschool.my/api/student-id-card-generate",
         formData,
         {
           headers: {

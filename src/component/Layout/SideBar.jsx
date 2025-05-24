@@ -244,7 +244,7 @@ export default function SideBarComponent({active,setActive ,sideBar,setSideBar})
                 active === 8 ? "text-white " : "text-black"
               } font-semibold `}
             >
-              Login
+              Student seat plan
             </h1>
           </div>
         </div>

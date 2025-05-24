@@ -3,7 +3,7 @@ import React from "react";
 export default function StudentReportCard() {
   return (
     <div>
-      <div className="min-h-[11] bg-[#0000008e]  flex items-center justify-center py-6 ">
+     <div className="min-h-[11] bg-[#0000008e]  flex items-center justify-center py-6 ">
         <div className=" text-black bg-white shadow-lg border-black h-full border py-16  px-20 max-w-4xl font-serif ">
           {/* Header Section */}
           <div className="flex  mb-4 gap-x-5 mt-5">
@@ -348,13 +348,13 @@ export default function StudentReportCard() {
             </div>
             <div className="w-40  text-center pt-1">
               <p> Class Teacher Signature</p>
-              <p className="border-t border-[gray] mt-10"></p>
+              <p className="border-t border-[gray] mt-10 "></p>
             </div>
 
             <div className="w-40  text-center pt-1"></div>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
   );
 }

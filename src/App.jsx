@@ -15,6 +15,9 @@ import Login from "./component/pages/Login";
 import StudentMarkSheetFillter from "./component/pages/StudentMarkSheetFillter";
 import { Route, Routes } from "react-router-dom";
 import StudentIdCard from "./component/pages/StudentIdCard";
+import Profile from "./component/pages/Profile";
+import ProtectedRoute from "./component/Protected/ProtectedRoute";
+import Card from "./component/pages/Card";
 
 export default function App() {
   const [sideBar, setSideBar] = useState(true);
@@ -24,9 +27,9 @@ export default function App() {
     // Function to check screen width and update sidebar state
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setSideBar(true); // md and up
+        setSideBar(true); 
       } else {
-        setSideBar(false); // below md
+        setSideBar(false); 
       }
     };
 
@@ -50,7 +53,7 @@ export default function App() {
           setActive={setActive}
         />
         <div className="md:ml-[280px] min-h-[95vh] p-3 mt-[5px] ">
-             <Routes>
+          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/fhotos" element={<Fhotos />} />
@@ -60,7 +63,17 @@ export default function App() {
             <Route path="/member" element={<BeComeAMember />} />
             <Route path="/student-report" element={<StudentReportCard />} />
             <Route path="/mark-sheet" element={<StudentMarkSheetFillter />} />
-              <Route path="/student-id-card" element={<StudentIdCard />} />
+            <Route path="/report" element={<StudentReportCard />} />
+            <Route path="/card" element={<Card />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/student-id-card" element={<StudentIdCard />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </div>

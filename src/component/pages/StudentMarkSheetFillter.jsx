@@ -23,7 +23,7 @@ export default function StudentMarkSheetFillter() {
     const MarksheetFetchedSessionData = async () => {
       try {
         const response = await axios.get(
-          "https://school.bdtravel.net/api/all-student-result",
+          "https://bdschool.my/api/all-student-result",
 
           {
             headers: {
@@ -57,7 +57,7 @@ export default function StudentMarkSheetFillter() {
 
     try {
       const response = await axios.post(
-        "https://school.bdtravel.net/api/get-all-marksheet-with-class-session-id",
+        "https://bdschool.my/api/get-all-marksheet-with-class-session-id",
         {
           classname_id: formData.classname_id,
           session_year_id: formData.session_year_id,
@@ -87,7 +87,7 @@ export default function StudentMarkSheetFillter() {
 
     try {
       const response = await axios.post(
-        "https://school.bdtravel.net/api/all-student-result-invoice",
+        "https://bdschool.my/api/all-student-result-invoice",
         formData,
         {
           headers: {

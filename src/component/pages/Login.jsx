@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const [login_id, setLogin_id] = useState("202510001");
   const [role, setRole] = useState("admin");
   const [password, setPassword] = useState("admin#123");
+  const navigate=useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +20,7 @@ export default function Login() {
 
     try {
       const response = await axios.post(
-        "https://school.bdtravel.net/api/login",
+        "https://bdschool.my/api/login",
 
         data,
 
@@ -29,9 +32,14 @@ export default function Login() {
       );
 
       console.log("Login Success:", response.data);
-      alert("Login Success");
+     toast.success("Login Successfully")
 
       localStorage.setItem("access_token", response.data.access_token);
+      localStorage.setItem("userData", JSON.stringify(response.data.userData));
+
+      navigate('/')
+      window.location.reload()
+
     } catch (error) {
       if (error.response) {
         console.error("Login Failed:", error.response.data);
