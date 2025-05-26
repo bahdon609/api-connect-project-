@@ -18,8 +18,10 @@ import StudentIdCard from "./component/pages/StudentIdCard";
 import Profile from "./component/pages/Profile";
 import ProtectedRoute from "./component/Protected/ProtectedRoute";
 import Card from "./component/pages/Card";
+import NewCart from "./component/pages/NewCart";
 
 export default function App() {
+
   const [sideBar, setSideBar] = useState(true);
   const [active, setActive] = useState();
 
@@ -65,6 +67,7 @@ export default function App() {
             <Route path="/mark-sheet" element={<StudentMarkSheetFillter />} />
             <Route path="/report" element={<StudentReportCard />} />
             <Route path="/card" element={<Card />} />
+            <Route path="/cart-2" element={<NewCart />} />
             <Route
               path="/profile"
               element={

@@ -503,3 +503,8 @@ textarea {
     background-position: center;
     background-repeat: no-repeat;
 }
+
+::selection {
+    background-color: black;
+    color: white;
+}
