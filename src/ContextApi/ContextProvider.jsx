@@ -1,15 +1,18 @@
 import React, { createContext, useEffect, useState } from "react";
 
- export const LoginUser = createContext(null);
+export const LoginUser = createContext(null);
+export const getAllStudentResult = createContext(null);
+export const GetAllStudentIdCartPrint = createContext(null);
+
 export default function ContextProvider({ children }) {
-  
   const [User, setUser] = useState();
+  const [getAllResult, setGetAllResult] = useState([]);
+  const [getAllStudentDataPrint, setgetAllStudentDataPrint] = useState([]);
   const [Refrash, setRefrash] = useState(false);
   const [isAuthenticate, setIsAuthenticate] = useState(false);
-  console.log(User);
-  console.log(isAuthenticate);
 
-  
+  console.log(getAllResult);
+
   // useEffect(() => {
   //   const Authenticate = !!localStorage.getItem("access_token")?.trim();
   //   const user = localStorage.getItem("access_token")?.trim();
@@ -21,8 +24,14 @@ export default function ContextProvider({ children }) {
   // }, [Refrash]);
 
   return (
-    <LoginUser.Provider value={{ User, setRefrash,isAuthenticate }}>
-      {children}
+    <LoginUser.Provider value={{ User, setRefrash, isAuthenticate }}>
+      <getAllStudentResult.Provider value={{ getAllResult, setGetAllResult }}>
+        <GetAllStudentIdCartPrint.Provider
+          value={{ getAllStudentDataPrint, setgetAllStudentDataPrint }}
+        >
+          {children}
+        </GetAllStudentIdCartPrint.Provider>
+      </getAllStudentResult.Provider>
     </LoginUser.Provider>
   );
 }

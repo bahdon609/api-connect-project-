@@ -24,6 +24,8 @@ import MyResult from "./component/pages/MyResult";
 import InstituteSettings from "./component/settings/InstituteSettings";
 import TransferCertificate from "./component/pages/TransferCertificate";
 import AdminResult from "./component/pages/AdminResult";
+import AllStudentResultTable from "./component/pages/AllStudentResultTable";
+import AllStudentIdCartPrint from "./component/pages/AllStudentIdCartPrint";
 
 export const baseURL = "https://creativeexam.com";
 
@@ -68,7 +70,7 @@ export default function App() {
             {/* <Route path="/videos" element={<Video />} />
             <Route path="/contact" element={<Contact />} /> */}
             <Route
-              path="/registration"
+              path="/admin-result"
               element={
                 <ProtectedRoute>
                   <AdminResult />
@@ -134,6 +136,22 @@ export default function App() {
             <Route path="/student-id-card" element={
                <ProtectedRoute>
                     <StudentIdCard />
+               </ProtectedRoute>
+          
+              
+              } />
+
+                  <Route path="/all-student" element={
+               <ProtectedRoute>
+                    <AllStudentResultTable />
+               </ProtectedRoute>
+          
+              
+              } />
+
+                  <Route path="/all-student-id-cart-print" element={
+               <ProtectedRoute>
+                    <AllStudentIdCartPrint />
                </ProtectedRoute>
           
               

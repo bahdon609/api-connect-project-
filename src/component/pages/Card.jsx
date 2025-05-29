@@ -8,7 +8,7 @@ export default function Card() {
     <div>
       <div className="text-end">
         <ReactToPrint
-          trigger={() => <button className="btn my-3">Print Report</button>}
+          trigger={() => <button className="button_primary my-3 mr-10">Print Report</button>}
           content={() => componentRef.current}
           pageStyle={`
             @page {
@@ -23,12 +23,12 @@ export default function Card() {
               .print-grid {
                 display: grid !important;
                 grid-template-columns: repeat(3, 1fr) !important;
-                gap: 10px;
+                gap: 5px;
               }
 
               .print-card {
                 width: 205px !important;
-                height: 340px !important;
+                height: 328px !important;
                 break-inside: avoid;
                 page-break-inside: avoid;
               }
@@ -62,9 +62,11 @@ export default function Card() {
                  }
                 .cart-contact{
                  font-size: 12px !important; 
+                  margin-top: -2px !important;
                 }
                  .cart-contact-div{
                   margin-top: -5px !important;
+                     font-size: 5px !important; 
                  } 
             }
           `}
@@ -73,7 +75,7 @@ export default function Card() {
 
       <div
         ref={componentRef}
-        className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4 print-grid w-[90%] mx-auto"
+        className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 print-grid w-[90%] gap-x-4 mx-auto"
       >
         {/* {[...Array(10)].map((_, index) => (
           <div

@@ -151,7 +151,7 @@ export default function SideBarComponent({
                   Admin Panel
                 </p>
                 <Link
-                  to="/registration"
+                  to="/admin-result"
                   onClick={() => setActive(6)}
                   className={`${
                     active === 6 ? "sidebar-active-bg" : "custom-button-hover"
