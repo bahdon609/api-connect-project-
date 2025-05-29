@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
 import { toast } from "react-toastify";
+import { baseURL } from "../../App";
 export default function StudentMarkSheetFillter() {
   const [student, setStudent] = useState([]);
   const [markSheetSession, setMarkSheetSession] = useState([]);
@@ -23,7 +24,7 @@ export default function StudentMarkSheetFillter() {
     const MarksheetFetchedSessionData = async () => {
       try {
         const response = await axios.get(
-          "https://bdschool.my/api/all-student-result",
+          `${baseURL}/api/all-student-result`,
 
           {
             headers: {
@@ -57,7 +58,7 @@ export default function StudentMarkSheetFillter() {
 
     try {
       const response = await axios.post(
-        "https://bdschool.my/api/get-all-marksheet-with-class-session-id",
+        `${baseURL}/api/get-all-marksheet-with-class-session-id`,
         {
           classname_id: formData.classname_id,
           session_year_id: formData.session_year_id,
@@ -87,7 +88,7 @@ export default function StudentMarkSheetFillter() {
 
     try {
       const response = await axios.post(
-        "https://bdschool.my/api/all-student-result-invoice",
+        `${baseURL}/api/all-student-result-invoice`,
         formData,
         {
           headers: {

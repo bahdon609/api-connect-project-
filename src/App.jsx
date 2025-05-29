@@ -5,12 +5,12 @@ import Header from "./component/Layout/Header";
 
 import SideBarComponent from "./component/Layout/SideBar";
 import Home from "./component/pages/Home";
-import About from "./component/pages/About";
-import Fhotos from "./component/pages/Fhotos";
+import About from "./component/pages/MyResult";
+import Fhotos from "./component/pages/Attendance";
 import Video from "./component/pages/Video";
 import Contact from "./component/pages/Contact";
-import RegistrationMejban from "./component/pages/RegistrationMejban";
-import BeComeAMember from "./component/pages/BeComeAMember";
+import RegistrationMejban from "./component/pages/AdminResult";
+import BeComeAMember from "./component/pages/TransferCertificate";
 import Login from "./component/pages/Login";
 import StudentMarkSheetFillter from "./component/pages/StudentMarkSheetFillter";
 import { Route, Routes } from "react-router-dom";
@@ -19,9 +19,15 @@ import Profile from "./component/pages/Profile";
 import ProtectedRoute from "./component/Protected/ProtectedRoute";
 import Card from "./component/pages/Card";
 import NewCart from "./component/pages/NewCart";
+import Attendance from "./component/pages/Attendance";
+import MyResult from "./component/pages/MyResult";
+import InstituteSettings from "./component/settings/InstituteSettings";
+import TransferCertificate from "./component/pages/TransferCertificate";
+import AdminResult from "./component/pages/AdminResult";
+
+export const baseURL = "https://creativeexam.com";
 
 export default function App() {
-
   const [sideBar, setSideBar] = useState(true);
   const [active, setActive] = useState();
 
@@ -29,9 +35,9 @@ export default function App() {
     // Function to check screen width and update sidebar state
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setSideBar(true); 
+        setSideBar(true);
       } else {
-        setSideBar(false); 
+        setSideBar(false);
       }
     };
 
@@ -57,17 +63,66 @@ export default function App() {
         <div className="md:ml-[280px] min-h-[95vh] p-3 mt-[5px] ">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/fhotos" element={<Fhotos />} />
-            <Route path="/videos" element={<Video />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/registration" element={<RegistrationMejban />} />
-            <Route path="/member" element={<BeComeAMember />} />
-            <Route path="/student-report" element={<StudentReportCard />} />
-            <Route path="/mark-sheet" element={<StudentMarkSheetFillter />} />
-            <Route path="/report" element={<StudentReportCard />} />
-            <Route path="/card" element={<Card />} />
-            <Route path="/cart-2" element={<NewCart />} />
+            <Route path="/my-result" element={<MyResult />} />
+            <Route path="/attendance" element={<Attendance />} />
+            {/* <Route path="/videos" element={<Video />} />
+            <Route path="/contact" element={<Contact />} /> */}
+            <Route
+              path="/registration"
+              element={
+                <ProtectedRoute>
+                  <AdminResult />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/transfer-certificate"
+              element={
+                <ProtectedRoute>
+                  <TransferCertificate />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/student-report"
+              element={
+                <ProtectedRoute>
+                  <StudentReportCard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/mark-sheet"
+              element={
+                <ProtectedRoute>
+                  <StudentMarkSheetFillter />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/report"
+              element={
+                <ProtectedRoute>
+                  <StudentReportCard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/teacher-id-cart"
+              element={
+                <ProtectedRoute>
+                  <Card />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/settings"
+              element={
+                <ProtectedRoute>
+                  <InstituteSettings />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/profile"
               element={
@@ -76,7 +131,13 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/student-id-card" element={<StudentIdCard />} />
+            <Route path="/student-id-card" element={
+               <ProtectedRoute>
+                    <StudentIdCard />
+               </ProtectedRoute>
+          
+              
+              } />
             <Route path="/login" element={<Login />} />
           </Routes>
         </div>

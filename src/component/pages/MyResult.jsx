@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default function About() {
+export default function MyResult() {
   return (
     <div>
       <div className="overflow-y-auto h-[calc(100vh-52px)] text-black">
         <div className="min-h-[calc(100vh-140px)]">
           <div className=" ">
             <div className="bg_primary_header">
-              <h1 className="primari_header_text">About Us</h1>
+              <h1 className="primari_header_text">My Result</h1>
             </div>
 
             <div className="border-2 bg-white shadow-md bg-_white p-5 text-justify mt-4 hover:border-green-500 group relative duration-500">

@@ -1,16 +1,16 @@
 import React from "react";
 
-export default function Fhotos() {
+export default function Attendance() {
   return (
     <div className="text-black">
       <div className="overflow-y-auto h-[calc(100vh-50px)]">
         <div className="min-h-[calc(100vh-140px)]">
           <div className="bg_primary_header">
-            <h1 className="primari_header_text">Fhotos</h1>
+            <h1 className="primari_header_text">Attendance</h1>
             <h5 className="">Memorable moments of our association</h5>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 my-4">
+          {/* <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 my-4">
             <div className="bg-_white border-2 border-bg_lightSlate rounded-md p-4 mx-auto w-full hover:border-green-500 duration-500">
               <div>
                 <div className="h-60 w-full overflow-hidden">
@@ -82,7 +82,7 @@ export default function Fhotos() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="border-2 py-5 bg_primary_footer px-2 lg:px-0 mx-2 rounded-sm">

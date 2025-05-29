@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { baseURL } from "../../App";
 
 export default function Login() {
   const [login_id, setLogin_id] = useState("202510001");
@@ -21,7 +22,7 @@ export default function Login() {
 
     try {
       const response = await axios.post(
-        "https://bdschool.my/api/login",
+        `${baseURL}/api/login`,
 
         data,
 
@@ -39,7 +40,9 @@ export default function Login() {
       localStorage.setItem("userData", JSON.stringify(response.data.userData));
 
       navigate('/')
-      window.location.reload()
+   
+  window.location.reload();
+
 
     } catch (error) {
       if (error.response) {
@@ -68,27 +71,8 @@ export default function Login() {
           </h1>
 
           <form onSubmit={handleSubmit} className="p-6 space-y-4">
-            <div className="form-control">
-              <label
-                htmlFor="phone"
-                className="block mb-1 font-semibold text-black"
-              >
-                Phone *
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                required
-                value={login_id}
-                onChange={(e) => setLogin_id(e.target.value)}
-                placeholder="Enter your phone number"
-                autoComplete="on"
-                className="w-full h-12 px-4 border border-gray-300 rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
-              />
-            </div>
 
-            {/* Role */}
+                {/* Role */}
             <div className="form-control">
               <label
                 htmlFor="role"
@@ -109,6 +93,27 @@ export default function Login() {
                 {/* Add more roles as needed */}
               </select>
             </div>
+            <div className="form-control">
+              <label
+                htmlFor="phone"
+                className="block mb-1 font-semibold text-black"
+              >
+                Login id *
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                required
+                value={login_id}
+                onChange={(e) => setLogin_id(e.target.value)}
+                placeholder="Enter your phone number"
+                autoComplete="on"
+                className="w-full h-12 px-4 border border-gray-300 rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+              />
+            </div>
+
+        
 
             {/* Password */}
             <div className="form-control">

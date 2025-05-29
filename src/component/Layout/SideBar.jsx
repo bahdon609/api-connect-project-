@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { RxAvatar, RxCross1, RxCross2 } from "react-icons/rx";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { FaPeopleGroup } from "react-icons/fa6";
-import { IoNewspaperOutline } from "react-icons/io5";
+import { GiHamburgerMenu, GiMilkCarton } from "react-icons/gi";
+import { FaAddressCard, FaPeopleGroup } from "react-icons/fa6";
+import { IoCart, IoNewspaperOutline, IoSettings } from "react-icons/io5";
 import { IoMdPhotos } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { PiStudentThin } from "react-icons/pi";
+import { GrCertificate } from "react-icons/gr";
+
+
 export default function SideBarComponent({
   active,
   setActive,
   sideBar,
   setSideBar,
 }) {
+  const isAuthenticate = localStorage.getItem("access_token")?.trim();
+  
   return (
     <AnimatePresence>
       {sideBar && (
@@ -60,7 +66,7 @@ export default function SideBarComponent({
             </Link>
 
             <Link
-              to="/about"
+              to="/my-result"
               onClick={() => setActive(1)}
               className={`${
                 active === 1 ? "sidebar-active-bg" : "custom-button-hover"
@@ -75,12 +81,12 @@ export default function SideBarComponent({
                   active === 1 ? "text-white " : "text-black"
                 } font-semibold `}
               >
-                About
+                My Result
               </h1>
             </Link>
 
             <Link
-              to="/fhotos"
+              to="/attendance"
               onClick={() => setActive(3)}
               className={`${
                 active === 3 ? "sidebar-active-bg" : "custom-button-hover"
@@ -95,11 +101,11 @@ export default function SideBarComponent({
                   active === 3 ? "text-white " : "text-black"
                 } font-semibold `}
               >
-                Photos
+                My Attendance
               </h1>
             </Link>
 
-            <Link
+            {/* <Link
               to="/videos"
               onClick={() => setActive(4)}
               className={`${
@@ -117,9 +123,9 @@ export default function SideBarComponent({
               >
                 Videos
               </h1>
-            </Link>
+            </Link> */}
 
-            <Link
+            {/* <Link
               to="/contact"
               onClick={() => setActive(5)}
               className={`${
@@ -137,53 +143,54 @@ export default function SideBarComponent({
               >
                 Contact
               </h1>
-            </Link>
+            </Link> */}
 
-            <p className="text-gray-400 text-sm font-semibold my-3">
-              Registration{" "}
-            </p>
+            {isAuthenticate && (
+              <>
+                <p className="text-gray-400 text-sm font-semibold my-3">
+                  Admin Panel
+                </p>
+                <Link
+                  to="/registration"
+                  onClick={() => setActive(6)}
+                  className={`${
+                    active === 6 ? "sidebar-active-bg" : "custom-button-hover"
+                  } custom-button`}
+                >
+                  <div className="h-[30px] w-[30px] sidebar-active-bg flex justify-center items-center rounded-md">
+                    <FaAddressCard  size={20} />
+                  </div>
 
-            <Link
-              to="/registration"
-              onClick={() => setActive(6)}
-              className={`${
-                active === 6 ? "sidebar-active-bg" : "custom-button-hover"
-              } custom-button`}
-            >
-              <div className="h-[30px] w-[30px] sidebar-active-bg flex justify-center items-center rounded-md">
-                <IoMdPhotos size={20} />
-              </div>
+                  <h1
+                    className={`${
+                      active === 6 ? "text-white " : "text-black"
+                    } font-semibold `}
+                  >
+                    Result
+                  </h1>
+                </Link>
 
-              <h1
-                className={`${
-                  active === 6 ? "text-white " : "text-black"
-                } font-semibold `}
-              >
-                Registration for Mejban
-              </h1>
-            </Link>
+                <Link
+                  to="/transfer-certificate"
+                  onClick={() => setActive(7)}
+                  className={`${
+                    active === 7 ? "sidebar-active-bg" : "custom-button-hover"
+                  } custom-button`}
+                >
+                  <div className="h-[30px] w-[30px] sidebar-active-bg flex justify-center items-center rounded-md">
+                    <GrCertificate size={20} />
+                  </div>
 
-            <Link
-              to="/member"
-              onClick={() => setActive(7)}
-              className={`${
-                active === 7 ? "sidebar-active-bg" : "custom-button-hover"
-              } custom-button`}
-            >
-              <div className="h-[30px] w-[30px] sidebar-active-bg flex justify-center items-center rounded-md">
-                <IoMdPhotos size={20} />
-              </div>
+                  <h1
+                    className={`${
+                      active === 7 ? "text-white " : "text-black"
+                    } font-semibold `}
+                  >
+                    Transfer Certificate
+                  </h1>
+                </Link>
 
-              <h1
-                className={`${
-                  active === 7 ? "text-white " : "text-black"
-                } font-semibold `}
-              >
-                Become a Member
-              </h1>
-            </Link>
-
-            {/* <div
+                {/* <div
             onClick={() => setActive(10)}
             className={`${
               active === 10 ? "sidebar-active-bg" : "custom-button-hover"
@@ -202,84 +209,87 @@ export default function SideBarComponent({
             </h1>
           </div> */}
 
-            <Link
-              to="/mark-sheet"
-              onClick={() => setActive(11)}
-              className={`${
-                active === 11 ? "sidebar-active-bg" : "custom-button-hover"
-              } custom-button`}
-            >
-              <div className="h-[30px] w-[30px] sidebar-active-bg flex justify-center items-center rounded-md">
-                <IoMdPhotos size={20} />
-              </div>
+                <Link
+                  to="/mark-sheet"
+                  onClick={() => setActive(11)}
+                  className={`${
+                    active === 11 ? "sidebar-active-bg" : "custom-button-hover"
+                  } custom-button`}
+                >
+                  <div className="h-[30px] w-[30px] sidebar-active-bg flex justify-center items-center rounded-md">
+                    <IoMdPhotos size={20} />
+                  </div>
 
-              <h1
-                className={`${
-                  active === 11 ? "text-white " : "text-black"
-                } font-semibold `}
-              >
-                Student Marksheet
-              </h1>
-            </Link>
+                  <h1
+                    className={`${
+                      active === 11 ? "text-white " : "text-black"
+                    } font-semibold `}
+                  >
+                  Testimonial
+                  </h1>
+                </Link>
 
-            <Link
-              to="/student-id-card"
-              onClick={() => setActive(12)}
-              className={`${
-                active === 12 ? "sidebar-active-bg" : "custom-button-hover"
-              } custom-button`}
-            >
-              <div className="h-[30px] w-[30px] sidebar-active-bg flex justify-center items-center rounded-md">
-                <IoMdPhotos size={20} />
-              </div>
+                <Link
+                  to="/student-id-card"
+                  onClick={() => setActive(12)}
+                  className={`${
+                    active === 12 ? "sidebar-active-bg" : "custom-button-hover"
+                  } custom-button`}
+                >
+                  <div className="h-[30px] w-[30px] sidebar-active-bg flex justify-center items-center rounded-md">
+                    <PiStudentThin size={20} />
+                  </div>
 
-              <h1
-                className={`${
-                  active === 12 ? "text-white " : "text-black"
-                } font-semibold `}
-              >
-                Genarate Id Card
-              </h1>
-            </Link>
+                  <h1
+                    className={`${
+                      active === 12 ? "text-white " : "text-black"
+                    } font-semibold `}
+                  >
+                    Student Id Card
+                  </h1>
+                </Link>
 
-            <div
-              onClick={() => setActive(8)}
-              className={`${
-                active === 8 ? "sidebar-active-bg" : "custom-button-hover"
-              } custom-button`}
-            >
-              <div className="h-[30px] w-[30px] sidebar-active-bg flex justify-center items-center rounded-md">
-                <IoMdPhotos size={20} />
-              </div>
+                <Link
+                  to="/teacher-id-cart"
+                  onClick={() => setActive(8)}
+                  className={`${
+                    active === 8 ? "sidebar-active-bg" : "custom-button-hover"
+                  } custom-button`}
+                >
+                  <div className="h-[30px] w-[30px] sidebar-active-bg flex justify-center items-center rounded-md">
+                    <GiMilkCarton  size={20} />
+                  </div>
 
-              <h1
-                className={`${
-                  active === 8 ? "text-white " : "text-black"
-                } font-semibold `}
-              >
-                Student seat plan
-              </h1>
-            </div>
+                  <h1
+                    className={`${
+                      active === 8 ? "text-white " : "text-black"
+                    } font-semibold `}
+                  >
+                    Teacher Id Card
+                  </h1>
+                </Link>
 
-            
-            <Link to="cart-2"
-              onClick={() => setActive(50)}
-              className={`${
-                active === 50 ? "sidebar-active-bg" : "custom-button-hover"
-              } custom-button`}
-            >
-              <div className="h-[30px] w-[30px] sidebar-active-bg flex justify-center items-center rounded-md">
-                <IoMdPhotos size={20} />
-              </div>
+                <Link
+                  to="settings"
+                  onClick={() => setActive(50)}
+                  className={`${
+                    active === 50 ? "sidebar-active-bg" : "custom-button-hover"
+                  } custom-button`}
+                >
+                  <div className="h-[30px] w-[30px] sidebar-active-bg flex justify-center items-center rounded-md">
+                    <IoSettings size={20} />
+                  </div>
 
-              <h1
-                className={`${
-                  active === 50 ? "text-white " : "text-black"
-                } font-semibold `}
-              >
-                Student Card
-              </h1>
-            </Link>
+                  <h1
+                    className={`${
+                      active === 50 ? "text-white " : "text-black"
+                    } font-semibold `}
+                  >
+                 Institute settings
+                  </h1>
+                </Link>
+              </>
+            )}
           </div>
         </motion.aside>
       )}

@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const axiosBaseUrl=axios.create({
-    baseURL:"https://bdschool.my"
+    baseURL:"https://creativeexam.com"
 })
 
 const  useBaseUrl=()=>{
